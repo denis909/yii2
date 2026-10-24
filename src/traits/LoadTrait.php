@@ -12,7 +12,7 @@ trait LoadTrait
     public function load($data, $formName = null)
     {
         $isValid = parent::load($data, $formName);
-        
+
         $event = new LoadEvent([
             'isValid' => $isValid,
             'values' => $data,
@@ -21,6 +21,6 @@ trait LoadTrait
 
         $this->trigger(LoadEvent::class, $event);
 
-        return $event->isValid;
+        return $isValid;
     }
 }
